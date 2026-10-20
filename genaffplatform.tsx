@@ -71,10 +71,6 @@ import {
   Legend,
 } from 'recharts';
 
-// ============================================================================
-// 1. CONFIGURATION & AUTHORITATIVE MODEL CATALOG (from src/utils/pricing.js)
-// ============================================================================
-
 const DEFAULT_API_BASE_URL = 'https://api.raiyanali.tech';
 const USD_TO_INR = 86;
 const MIN_TOPUP_INR = 10;
@@ -292,9 +288,6 @@ function calculateCostInr(modelId: string, promptTokens: number, completionToken
   );
 }
 
-// ============================================================================
-// 2. TYPES & FORMATTERS
-// ============================================================================
 
 interface UserProfile {
   id: string;
@@ -433,9 +426,9 @@ function copyTextToClipboard(text: string): boolean {
   }
 }
 
-// ============================================================================
+
 // 3. RAZORPAY CHECKOUT LOADER
-// ============================================================================
+
 
 const RAZORPAY_SCRIPT = 'https://checkout.razorpay.com/v1/checkout.js';
 
@@ -465,9 +458,9 @@ function loadRazorpayScript(): Promise<boolean> {
   });
 }
 
-// ============================================================================
+
 // 4. MAIN APPLICATION COMPONENT
-// ============================================================================
+
 
 export default function App() {
   // --- Theme state ---
@@ -513,7 +506,7 @@ export default function App() {
     }, 5000);
   }, []);
 
-  // --- Authentication & Session State (in-memory + sessionStorage) ---
+
   const [jwtToken, setJwtToken] = useState<string | null>(() => {
     try {
       return window.sessionStorage.getItem('genaff_jwt');
@@ -537,7 +530,7 @@ export default function App() {
       window.sessionStorage.setItem('genaff_jwt', token);
       window.sessionStorage.setItem('genaff_user', JSON.stringify(profile));
     } catch {
-      // in-memory fallback
+  
     }
   }, []);
 
